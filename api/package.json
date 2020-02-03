@@ -1,0 +1,17 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-node": "0.0.1-security",
+    "pg": "^7.18.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.3"
+  }
+}

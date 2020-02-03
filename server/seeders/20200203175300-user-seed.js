@@ -1,23 +1,27 @@
-'use strict';
+const lodash = require('lodash')
+const Faker = require('faker')
+const User = require('../models/User')
+('use strict')
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [{
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'example@example.com',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }]);
+    return queryInterface.bulkInsert(
+      'Users',
+      [
+        {
+          userName: Faker.name.findName(),
+          password: Faker.internet.password(),
+          email: Faker.internet.email(),
+          avatarUrl: Faker.image.imageUrl(),
+          createdAt: Faker.date.past(),
+          updatedAt: Faker.date.past()
+        }
+      ],
+      {}
+    )
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+    return queryInterface.bulkDelete('users', null, {})
   }
-};
+}
